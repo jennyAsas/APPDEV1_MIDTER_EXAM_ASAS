@@ -1,7 +1,13 @@
+<!-- src/app/saved-cities/saved-cities.component.html -->
 <div class="card p-4 shadow">
-  <h3>Saved Cities</h3>
-  <table class="table table-striped mt-3" *ngIf="cities.length > 0; else noCities">
-    <thead>
+  <h3 class="text-brown mb-3">Saved Cities</h3>
+
+  <div *ngIf="cities.length === 0">
+    <p>No saved cities yet.</p>
+  </div>
+
+  <table class="table table-striped" *ngIf="cities.length > 0">
+    <thead class="table-brown text-white">
       <tr>
         <th>City</th>
         <th>Temperature (°C)</th>
@@ -12,20 +18,8 @@
       <tr *ngFor="let city of cities">
         <td>{{ city.name }}</td>
         <td>{{ city.temperature }}</td>
-        <td>
-          <button
-            class="btn btn-danger btn-sm"
-            style="background-color: #6f4e37"
-            (click)="removeCity(city.name)"
-          >
-            Remove
-          </button>
-        </td>
+        <td><button class="btn btn-outline-brown btn-sm" (click)="removeCity(city.name)">Remove</button></td>
       </tr>
     </tbody>
   </table>
-
-  <ng-template #noCities>
-    <p>No saved cities yet.</p>
-  </ng-template>
 </div>

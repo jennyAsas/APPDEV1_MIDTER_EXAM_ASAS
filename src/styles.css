@@ -1,52 +1,38 @@
-/* Bootstrap is installed in angular.json (confirm below) */
+/* src/styles.css */
+@import "bootstrap/dist/css/bootstrap.min.css";
+
 body {
     background-color: #f3efeb;
-    color: #3d2b1f;
-    font-family: "Segoe UI", sans-serif;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-/* Brown theme */
 .bg-brown {
-    background-color: #6f4e37 !important;
+    background-color: #5d4037 !important;
 }
 
-.navbar-brand,
-.nav-link {
-    color: #fff !important;
-    font-weight: 500;
+.text-brown {
+    color: #5d4037 !important;
 }
 
-.nav-link.active {
-    text-decoration: underline;
-    font-weight: 600;
+.btn-brown {
+    background-color: #5d4037;
+    color: white;
 }
 
-.card {
-    border: none;
-    border-radius: 10px;
-    background-color: #fffaf5;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.btn-brown:hover {
+    background-color: #4e342e;
 }
 
-.btn-primary {
-    background-color: #6f4e37;
-    border: none;
+.btn-outline-brown {
+    border: 1px solid #5d4037;
+    color: #5d4037;
 }
 
-.btn-primary:hover {
-    background-color: #5c3f2c;
+.btn-outline-brown:hover {
+    background-color: #5d4037;
+    color: white;
 }
 
-.btn-success {
-    background-color: #a1744b;
-    border: none;
-}
-
-.btn-success:hover {
-    background-color: #8b623d;
-}
-
-.table thead {
-    background-color: #6f4e37;
-    color: #fff;
+.table-brown {
+    background-color: #5d4037;
 }

@@ -1,26 +1,28 @@
+// src/app/home/home.component.ts
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { WeatherService } from '../../services/weather';
-import { CityService } from '../../services/city';
+import { CityService } from '../../services/city'
+import { FormsModule } from '@angular/forms'; // ✅ Add this
+import { CommonModule } from '@angular/common'; // ✅ Add this
 
 @Component({
   selector: 'app-home',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
+  standalone: true, // ✅ important for Angular 20
+  imports: [CommonModule, FormsModule], // ✅ Add this line
   templateUrl: './home.html',
+  styleUrls: ['./home.css'],
 })
 export class HomeComponent {
-  cityName: string = '';
-  weatherData: any = null;
-  errorMessage: string = '';
+  cityName = '';
+  weatherData: any;
+  errorMessage = '';
 
   constructor(
     private weatherService: WeatherService,
     private cityService: CityService,
   ) {}
 
-  onSubmit() {
+  searchWeather() {
     if (!this.cityName.trim()) {
       this.errorMessage = 'Please enter a city name.';
       return;
@@ -28,22 +30,28 @@ export class HomeComponent {
 
     this.weatherService.getWeather(this.cityName).subscribe({
       next: (data) => {
-        this.weatherData = data.current;
-        this.errorMessage = '';
+        if (data.success === false) {
+          this.errorMessage = 'City not found.';
+          this.weatherData = null;
+        } else {
+          this.weatherData = data;
+          this.errorMessage = '';
+        }
       },
-      error: (err) => {
-        this.errorMessage = 'Unable to fetch weather data.';
+      error: () => {
+        this.errorMessage = 'Error fetching weather data.';
       },
     });
   }
 
   saveCity() {
     if (this.weatherData) {
-      this.cityService.saveCity({
-        name: this.cityName,
-        temperature: this.weatherData.temperature,
-      });
-      alert(`${this.cityName} saved successfully!`);
+      const city = {
+        name: this.weatherData.location.name,
+        temperature: this.weatherData.current.temperature,
+      };
+      this.cityService.addCity(city);
+      alert(`${city.name} saved!`);
     }
   }
 }

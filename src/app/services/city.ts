@@ -1,5 +1,5 @@
+// src/app/services/city.service.ts
 import { Injectable } from '@angular/core';
-
 
 @Injectable({
   providedIn: 'root',
@@ -7,8 +7,8 @@ import { Injectable } from '@angular/core';
 export class CityService {
   private savedCities: { name: string; temperature: number }[] = [];
 
-  saveCity(city: { name: string; temperature: number }) {
-    const exists = this.savedCities.find((c) => c.name.toLowerCase() === city.name.toLowerCase());
+  addCity(city: { name: string; temperature: number }) {
+    const exists = this.savedCities.find((c) => c.name === city.name);
     if (!exists) {
       this.savedCities.push(city);
     }

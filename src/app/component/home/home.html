@@ -1,26 +1,18 @@
+<!-- src/app/home/home.component.html -->
 <div class="card p-4 shadow">
-  <h3 class="mb-3">Search City Weather</h3>
+  <h3 class="text-brown mb-3">Search City Weather</h3>
 
-  <form (ngSubmit)="onSubmit()" #weatherForm="ngForm" class="d-flex mb-3">
-    <input
-      type="text"
-      class="form-control me-2"
-      placeholder="Enter city name"
-      name="city"
-      [(ngModel)]="cityName"
-      required
-    />
-    <button class="btn btn-primary" type="submit" style="background-color: #6f4e37">Search</button>
+  <form (ngSubmit)="searchWeather()" class="d-flex gap-2">
+    <input type="text" [(ngModel)]="cityName" name="city" class="form-control" placeholder="Enter city name" required />
+    <button class="btn btn-brown" type="submit">Search</button>
   </form>
 
-  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  <p class="text-danger mt-3" *ngIf="errorMessage">{{ errorMessage }}</p>
 
-  <div *ngIf="weatherData" class="mt-3">
-    <h4>Weather in {{ cityName }}</h4>
-    <p><strong>Temperature:</strong> {{ weatherData.temperature }}°C</p>
-    <p><strong>Description:</strong> {{ weatherData.weather_descriptions[0] }}</p>
-    <button class="btn btn-success" style="background-color: #6f4e37" (click)="saveCity()">
-      Save City
-    </button>
+  <div *ngIf="weatherData" class="mt-4">
+    <h4>{{ weatherData.location.name }}, {{ weatherData.location.country }}</h4>
+    <p><strong>Temperature:</strong> {{ weatherData.current.temperature }}°C</p>
+    <p><strong>Condition:</strong> {{ weatherData.current.weather_descriptions[0] }}</p>
+    <button class="btn btn-outline-brown mt-2" (click)="saveCity()">Save City</button>
   </div>
 </div>
