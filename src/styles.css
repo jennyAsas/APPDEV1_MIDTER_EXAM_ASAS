@@ -1,0 +1,52 @@
+/* Bootstrap is installed in angular.json (confirm below) */
+body {
+    background-color: #f3efeb;
+    color: #3d2b1f;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* Brown theme */
+.bg-brown {
+    background-color: #6f4e37 !important;
+}
+
+.navbar-brand,
+.nav-link {
+    color: #fff !important;
+    font-weight: 500;
+}
+
+.nav-link.active {
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    background-color: #fffaf5;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background-color: #6f4e37;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #5c3f2c;
+}
+
+.btn-success {
+    background-color: #a1744b;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #8b623d;
+}
+
+.table thead {
+    background-color: #6f4e37;
+    color: #fff;
+}

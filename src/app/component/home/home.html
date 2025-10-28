@@ -1,0 +1,26 @@
+<div class="card p-4 shadow">
+  <h3 class="mb-3">Search City Weather</h3>
+
+  <form (ngSubmit)="onSubmit()" #weatherForm="ngForm" class="d-flex mb-3">
+    <input
+      type="text"
+      class="form-control me-2"
+      placeholder="Enter city name"
+      name="city"
+      [(ngModel)]="cityName"
+      required
+    />
+    <button class="btn btn-primary" type="submit" style="background-color: #6f4e37">Search</button>
+  </form>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+  <div *ngIf="weatherData" class="mt-3">
+    <h4>Weather in {{ cityName }}</h4>
+    <p><strong>Temperature:</strong> {{ weatherData.temperature }}°C</p>
+    <p><strong>Description:</strong> {{ weatherData.weather_descriptions[0] }}</p>
+    <button class="btn btn-success" style="background-color: #6f4e37" (click)="saveCity()">
+      Save City
+    </button>
+  </div>
+</div>
